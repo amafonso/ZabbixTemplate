@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.4</version>
+    <date>2021-04-08T14:41:18Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Vertiv UPS</template>
+            <name>Template Vertiv UPS</name>
+            <templates>
+                <template>
+                    <name>Template ICMP Ping and SNMP</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Battery</name>
+                </application>
+                <application>
+                    <name>Environmental</name>
+                </application>
+                <application>
+                    <name>Information</name>
+                </application>
+                <application>
+                    <name>Power</name>
+                </application>
+                <application>
+                    <name>Test</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>UPS Battery Status</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.2.1.33.1.2.1.0</snmp_oid>
+                    <key>upsBatteryStatus</key>
+                    <history>7d</history>
+                    <description>The indication of the capacity remaining in the UPS system's batteries.   A value of batteryNormal indicates that the remaining run-time is greater than upsConfigLowBattTime.  A value of batteryLow indicates that the remaining battery run-time is less than or equal to upsConfigLowBattTime.  A value of batteryDepleted indicates that the UPS will be unable to sustain the present load when and if the utility power is lost (including the possibility that the utility power is currently absent and the UPS is unable to sustain the output).</description>
+                    <applications>
+                        <application>
+                            <name>Battery</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Vertiv Battery Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>UPS Estimated Charge Remaining</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.2.1.33.1.2.4.0</snmp_oid>
+                    <key>upsEstimatedChargeRemaining</key>
+                    <history>7d</history>
+                    <units>%</units>
+                    <description>An estimate of the battery charge remaining expressed as a percent of full charge.</description>
+                    <applications>
+                        <application>
+                            <name>Battery</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>USP Estimated Minutes Remaining</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.2.1.33.1.2.3.0</snmp_oid>
+                    <key>upsEstimatedMinutesRemaining</key>
+                    <history>7d</history>
+                    <units>m</units>
+                    <description>An estimate of the time to battery charge depletion under the present load conditions if the utility power is off and remains off, or if it were to be lost and&#13;
+remain off.</description>
+                    <applications>
+                        <application>
+                            <name>Battery</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>UPS agent software version</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.2.1.33.1.1.4.0</snmp_oid>
+                    <key>upsIdentAgentSoftwareVersion</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>The UPS agent software version.  This variable may or&#13;
+may not have the same value as&#13;
+upsIdentUPSSoftwareVersion in some implementations.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Name of the UPS manufacturer.</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.2.1.33.1.1.1.0</snmp_oid>
+                    <key>upsIdentManufacturer</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>The name of the UPS manufacturer.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>UPS Model designation.</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.2.1.33.1.1.2.0</snmp_oid>
+                    <key>upsIdentModel</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>The UPS Model designation.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>UPS firmware/software version</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.2.1.33.1.1.3.0</snmp_oid>
+                    <key>upsIdentUPSSoftwareVersion</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>The UPS firmware/software version(s).  This variable&#13;
+may or may not have the same value as&#13;
+upsIdentAgentSoftwareVersion in some implementations.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>UPS Seconds ON Battery</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.2.1.33.1.2.2.0</snmp_oid>
+                    <key>upsSecondsOnBattery</key>
+                    <history>7d</history>
+                    <units>s</units>
+                    <description>If the unit is on battery power, the elapsed time since the UPS last switched to battery power, or the time since the network management subsystem was last restarted, whichever is less.  Zero shall be returned if the unit is not on battery  power.</description>
+                    <applications>
+                        <application>
+                            <name>Battery</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>UPS Test Results Summary</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.2.1.33.1.7.3</snmp_oid>
+                    <key>upsTestResultsSummary</key>
+                    <history>7d</history>
+                    <description>The results of the current or last UPS diagnostics test performed.  The values for donePass(1), doneWarning(2), and doneError(3) indicate that the test completed either successfully, with a warning, or with an error, respectively.  The value aborted(4) is returned for tests which are aborted by setting the value of upsTestId to upsTestAbortTestInProgress.Tests which have not yet concluded are indicated byinProgress(5).  The value noTestsInitiated(6)indicates that no previous test results are available,such as is the case when no tests have been run sincethe last reinitialization of the network managementsubsystem and the system has no provision for non-volatile storage of test results.</description>
+                    <applications>
+                        <application>
+                            <name>Test</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Vertiv Test Results Summary</name>
+                    </valuemap>
+                </item>
+            </items>
+        </template>
+    </templates>
+    <value_maps>
+        <value_map>
+            <name>Vertiv Battery Status</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>unknown</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>batteryNormal</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>batteryLow</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>batteryDepleted</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Vertiv Test Results Summary</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>donePass</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>doneWarning</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>doneError</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>aborted</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>inProgress</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>noTestsInitiated</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
