@@ -1,0 +1,2011 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.4</version>
+    <date>2021-04-08T14:39:57Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Vertiv CRV</template>
+            <name>Template Vertiv CRV</name>
+            <templates>
+                <template>
+                    <name>Template ICMP Ping and SNMP</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Battery</name>
+                </application>
+                <application>
+                    <name>Environmental</name>
+                </application>
+                <application>
+                    <name>Fans</name>
+                </application>
+                <application>
+                    <name>Healthy</name>
+                </application>
+                <application>
+                    <name>Information</name>
+                </application>
+                <application>
+                    <name>Power</name>
+                </application>
+                <application>
+                    <name>Test</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>CRV Abnormal High Pressure alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.22.0</snmp_oid>
+                    <key>abnormalhighpressurealarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>abnormalhighpressurealarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme anormal de alta pressão</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV A phase voltage</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.73.0</snmp_oid>
+                    <key>aphasevoltage</key>
+                    <history>7d</history>
+                    <units>V</units>
+                    <description>aphasevoltage, stored as 0.01.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.01</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>CRV B phase voltage</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.74.0</snmp_oid>
+                    <key>bphasevoltage</key>
+                    <history>7d</history>
+                    <units>V</units>
+                    <description>bphasevoltage, stored as 0.01.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.01</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>CRV Common Alarm Output</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.18.0</snmp_oid>
+                    <key>commonalarmoutput</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>Commonalarmoutput, status.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Output_Valve_Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Communicate status</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.81.0</snmp_oid>
+                    <key>communicatestatus</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>communicatestatus, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alerta no status de comunicação</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Compressor bus voltage fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.66.0</snmp_oid>
+                    <key>compressorbusvoltagefault</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>compressorbusvoltagefault, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha na tensão do barramento do compressor</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Compressor capacity</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.79.0</snmp_oid>
+                    <key>compressorcapacity</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>compressorcapacity, stored as 0.01.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.01</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>CRV Compressor drive communication</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.61.0</snmp_oid>
+                    <key>compressordrivecommunication</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>compressordrivecommunication, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alerta na comunicação da unidade de compressor</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Compressor drive fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.62.0</snmp_oid>
+                    <key>compressordrivefault</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>compressordrivefault, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha no acionamento do compressor</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Compressor Output, Status.</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.14.0</snmp_oid>
+                    <key>compressoroutput</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>condensatepumpoutput, status.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Output_Valve_Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Compressor overcurrent protection alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.64.0</snmp_oid>
+                    <key>compressorovercurrentprotecti</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>compressorovercurrentprotecti, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de proteção de sobrecorrente do compressor</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Compressor phase loss protection alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.65.0</snmp_oid>
+                    <key>compressorphaselossprotectio</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>compressorphaselossprotectio, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de proteção contra perda de fase do compressor</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Compressor radiator over temper fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.63.0</snmp_oid>
+                    <key>compressorradiatorovertemper</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>compressorradiatorovertemper, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Radiador do compressor sob falha de têmpera</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Condensate Pump Output, status.</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.13.0</snmp_oid>
+                    <key>condensatepumpoutput</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>condensatepumpoutput, status.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Output_Valve_Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV C phase voltage</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.74.0</snmp_oid>
+                    <key>cphasevoltage</key>
+                    <history>7d</history>
+                    <units>V</units>
+                    <description>bphasevoltage, stored as 0.01.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.01</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>CRV Dehumidifying</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.8.0</snmp_oid>
+                    <key>dehumidifying</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>dehumidifying, status.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Status_General</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Eev communication failure</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.56.0</snmp_oid>
+                    <key>eevcommunicationfailure</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>eevcommunicationfailure, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha na comunicação EEV</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Electric heating failure alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.53.0</snmp_oid>
+                    <key>electricheatingfailurealarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>electric heating failure alarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de falha de aquecimento elétrico</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Electric Heating Output, Status</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.15.0</snmp_oid>
+                    <key>electricheatingoutput</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>electricheatingoutput, status.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Output_Valve_Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Exhaust gas temp sensor fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.54.0</snmp_oid>
+                    <key>exhaustgastempsensorfault</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>exhaustgastempsensorfault, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha no sensor de temperatura dos gases de escape</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Exhaust Low Superheat, status.</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.24.0</snmp_oid>
+                    <key>exhaustlowsuperheat</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>exhaustlowsuperheat, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Exaustão Baixo Superaquecimento</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Exhaust Temperature Alarm, status.</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.23.0</snmp_oid>
+                    <key>exhausttemperaturealarm</key>
+                    <history>7d</history>
+                    <description>exhausttemperaturealarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de temperatura de exaustão</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Fan 1 Status</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.9.0</snmp_oid>
+                    <key>fan1status</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>fan1status, status.</description>
+                    <applications>
+                        <application>
+                            <name>Fans</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Fault_Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Fan 2 Status</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.10.0</snmp_oid>
+                    <key>fan2status</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>fan2status, status.</description>
+                    <applications>
+                        <application>
+                            <name>Fans</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Fault_Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Fan 3 Status</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.11.0</snmp_oid>
+                    <key>fan3status</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>fan3status, status.</description>
+                    <applications>
+                        <application>
+                            <name>Fans</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Fault_Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Fan 4 Status</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.12.0</snmp_oid>
+                    <key>fan4status</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>fan4status, status.</description>
+                    <applications>
+                        <application>
+                            <name>Fans</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Fault_Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Fan Output Status</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.16.0</snmp_oid>
+                    <key>fanoutput</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>fanoutput, status.</description>
+                    <applications>
+                        <application>
+                            <name>Fans</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Output_Valve_Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Fan power failure</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.42.0</snmp_oid>
+                    <key>fanpowerfailure</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>fanpowerfailure, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha de energia do ventilador</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV  Fan speed</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.80.0</snmp_oid>
+                    <key>fanspeed</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>fanspeed, stored as 0.01.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.01</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>CRV Filter clogged alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.40.0</snmp_oid>
+                    <key>filtercloggedalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>filtercloggedalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme entupido do filtro</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV  Filter maintenance</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.41.0</snmp_oid>
+                    <key>filtermaintenance</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>filtermaintenance, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme, necessário manutenção do filtro</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Floor overflow alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.38.0</snmp_oid>
+                    <key>flooroverflowalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>flooroverflowalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de estouro de piso</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Group address repeated alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.68.0</snmp_oid>
+                    <key>groupaddressrepeatedalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>groupaddressrepeatedalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme repetido de endereço de grupo</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Group host loss alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.45.0</snmp_oid>
+                    <key>grouphostlossalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>grouphostlossalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de perda de host do grupo</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Group slave loss alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.46.0</snmp_oid>
+                    <key>groupslavelossalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>groupslavelossalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de perda de escravo em grupo</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Heating Flag</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.6.0</snmp_oid>
+                    <key>heatingflag</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>heatingflag, status.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Status_General</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV High Pressure Alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.20.0</snmp_oid>
+                    <key>highpressurealarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>High Pressure Alarm, status</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de alta pressão</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV High pressure lock alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.30.0</snmp_oid>
+                    <key>highpressurelockalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>highpressurelockalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de bloqueio de alta pressão</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV High pressure sensor fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.52.0</snmp_oid>
+                    <key>highpressuresensorfault</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>highpressuresensorfault, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha no sensor de alta pressão</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV High water level alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.39.0</snmp_oid>
+                    <key>highwaterlevelalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>highwaterlevelalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de nível de água alto</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Humidifier fault alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.67.0</snmp_oid>
+                    <key>humidifierfaultalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>humidifierfaultalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de falha do umidificador</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Humidifier Output</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.17</snmp_oid>
+                    <key>humidifieroutput</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>humidifieroutput, status.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Output_Valve_Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Device Manufacturer</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.1.1.0</snmp_oid>
+                    <key>identManufacturer</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>The name of the device manufacturer.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>CRV Manufacturers Model</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.1.2.0</snmp_oid>
+                    <key>identModel</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>The manufacturers model designation of the device.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>CRV Intake air temperature sensor fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.59.0</snmp_oid>
+                    <key>intakeairtemperaturesensorf</key>
+                    <history>7d</history>
+                    <description>intakeairtemperaturesensorf, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha no sensor de temperatura do ar de admissão</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Liquids Olenoid Valve Output, status.</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.19.0</snmp_oid>
+                    <key>liquidsolenoidvalveoutput</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>Liquidsolenoidvalveoutput, status.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Output_Valve_Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Lock exhaust temperature alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.32.0</snmp_oid>
+                    <key>lockexhausttemperaturealarm</key>
+                    <history>7d</history>
+                    <description>lockexhausttemperaturealarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Bloquear alarme de temperatura de escape</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Low exhaust superheat lock alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.33.0</snmp_oid>
+                    <key>lowexhaustsuperheatlockalar</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>lowexhaustsuperheatlockalar, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de bloqueio de superaquecimento de escape baixo</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV  Low Pressure Alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.21.0</snmp_oid>
+                    <key>lowpressurealarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>Low Pressure Alarm, status</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de baixa pressão</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Low pressure lock alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.31.0</snmp_oid>
+                    <key>lowpressurelockalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>lowpressurelockalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de bloqueio de baixa pressão</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Low pressure sensor fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.60.0</snmp_oid>
+                    <key>lowpressuresensorfault</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>lowpressuresensorfault, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha no sensor de baixa pressão</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Low pressure sensor lock</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.43.0</snmp_oid>
+                    <key>lowpressuresensorlock</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>lowpressuresensorlock, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Bloqueio do sensor de baixa pressão</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV  Monitor Shutdown</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.2.0</snmp_oid>
+                    <key>monitorshutdown</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>monitorshutdown, status.</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Status_General</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Not selected refrigerant alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.57.0</snmp_oid>
+                    <key>notselectedrefrigerantalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>notselectedrefrigerantalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de refrigerante não selecionado</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV  Panel OFF</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.3.0</snmp_oid>
+                    <key>paneloff</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>paneloff, status</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Status_General</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Power frequency</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.76.0</snmp_oid>
+                    <key>powerfrequency</key>
+                    <history>7d</history>
+                    <units>Hz</units>
+                    <description>powerfrequency, stored as 0.01.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.01</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>CRV Power losephase alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.37.0</snmp_oid>
+                    <key>powerlosephasealarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>powerlosephasealarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme perdida de potência na fase</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Power loss alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.34.0</snmp_oid>
+                    <key>powerlossalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>powerlossalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de perda de energia</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Power overvoltage alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.35.0</snmp_oid>
+                    <key>powerovervoltagealarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>powerovervoltagealarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de sobretensão</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Power undervoltage alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.36.0</snmp_oid>
+                    <key>powerundervoltagealarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>powerundervoltagealarm, status</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de subtensão de potência</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Refrigerant shortage alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.58.0</snmp_oid>
+                    <key>refrigerantshortagealarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>refrigerantshortagealarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de falta de refrigerante</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Refrigeration</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.5.0</snmp_oid>
+                    <key>refrigeration</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>refrigeration, status.</description>
+                    <applications>
+                        <application>
+                            <name>Power</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Status_General</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Remote shutdown alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.44.0</snmp_oid>
+                    <key>remoteshutdownalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>remoteshutdownalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de desligamento remoto</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Remote temp sensor fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.51.0</snmp_oid>
+                    <key>remotetempsensorfault</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>remotetempsensorfault, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Return air high hum alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.28.0</snmp_oid>
+                    <key>returnairhighhumalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>returnairhighhumalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Retorno de ar alto zumbido</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Return Air High Temp Alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.25.0</snmp_oid>
+                    <key>returnairhightempalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>returnairhightempalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de alta temperatura do ar de retorno</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Return air humidity</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.71.0</snmp_oid>
+                    <key>returnairhumidity</key>
+                    <history>7d</history>
+                    <units>%</units>
+                    <description>returnairhumidity, stored as 0.01.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.01</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;=15</expression>
+                            <name>Alerta no sensor de umidade Return air, abaixo de 15%</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>{last()}&gt;=60</expression>
+                            <name>Alerta no sensor de umidade Return air, maior que 60%</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Return air hum sensor fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.48.0</snmp_oid>
+                    <key>returnairhumsensorfault</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>returnairhumsensorfault,  status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha no sensor de zumbido do ar de retorno</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Return air low hum alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.29.0</snmp_oid>
+                    <key>returnairlowhumalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>returnairlowhumalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Retorno de alarme de zumbido baixo</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Temperatura do ar de retorno</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.70.0</snmp_oid>
+                    <key>returnairtemperature</key>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>C</units>
+                    <description>returnairtemperature, stored as 0.01â.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.01</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;=10</expression>
+                            <name>Alerta no sensor de Temperatura, Return air, abaixo de 10 ºC</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>{last()}&gt;=27</expression>
+                            <name>Alerta no sensor de Temperatura, Return air, abaixo de 27 ºC</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Return air temp sensor fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.47.0</snmp_oid>
+                    <key>returnairtempsensorfault</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>returnairtempsensorfault, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha no sensor de temperatura do ar de retorno</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Soft Shutdown Status</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.2.0</snmp_oid>
+                    <key>softshutdownstatus</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>softshutdownstatus, status.</description>
+                    <applications>
+                        <application>
+                            <name>Power</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Status_General</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>CRV Supply air high temp alarm</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.27.0</snmp_oid>
+                    <key>supplyairhightempalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>Supplyairhightempalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de alta temperatura do ar de alimentação</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Supply air low temp alarm, status.</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.26.0</snmp_oid>
+                    <key>supplyairlowtempalarm</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>supplyairlowtempalarm, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Alarme de baixa temperatura do ar de alimentação</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Supply air temp diff sensor fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.49.0</snmp_oid>
+                    <key>supplyairtempdiffsensorfau</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>supplyairtempdiffsensorfau, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha no difsensor da temperatura do ar de alimentação</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Supply air Temperature</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.69.0</snmp_oid>
+                    <key>supplyairtemperature</key>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>C</units>
+                    <description>supplyairtemperature, stored as 0.01â.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.01</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;=10</expression>
+                            <name>Alerta no sensor de Temperatura no fornecimento do ar, abaixo de 10 ºC</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>{last()}&gt;=27</expression>
+                            <name>Alerta no sensor de Temperatura no fornecimento do ar, abaixo de 27 ºC</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Supply air temp sensor fault</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.50.0</snmp_oid>
+                    <key>supplyairtempsensorfault</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>supplyairtempsensorfault, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Alarm_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Falha no sensor de temperatura do ar de alimentação</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Theoretical air humidity</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.72.0</snmp_oid>
+                    <key>theoreticalairhumidity</key>
+                    <history>7d</history>
+                    <units>%</units>
+                    <description>theoreticalairhumidity, stored as 0.01.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.01</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;=15</expression>
+                            <name>Alerta no sensor de umidade Theoretical air, abaixo de 15%</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>{last()}&gt;=60</expression>
+                            <name>Alerta no sensor de umidade Theoretical air, maior que 60%</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Unit group control mode</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.78.0</snmp_oid>
+                    <key>unitgroupcontrolmode</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>unitgroupcontrolmode, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Control_status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{diff()}&lt;&gt;0</expression>
+                            <name>Alterado o modo de controle do grupo de unidades</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>CRV Unitoperation status</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.13400.2.339.2.2.77.0</snmp_oid>
+                    <key>unitoperationstatus</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <description>unitoperationstatus, status.</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>ENP_AC_CRV_Oper_Status</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{diff()}&lt;&gt;0</expression>
+                            <name>Status de operação da unidade alterado para {ITEM.LASTVALUE}</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>({Template Vertiv CRV:fan1status.last()}+{Template Vertiv CRV:fan2status.last()}+{Template Vertiv CRV:fan3status.last()}+{Template Vertiv CRV:fan4status.last()})&lt;&gt;0</expression>
+            <name>Identificado uma falha em uma das 4 Fans</name>
+            <priority>WARNING</priority>
+        </trigger>
+    </triggers>
+    <value_maps>
+        <value_map>
+            <name>ENP_AC_CRV_Alarm_status</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Normal</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Alarm</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>ENP_AC_CRV_Control_status</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>GroupControl</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>ENP_AC_CRV_Fault_Status</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Normal</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Fault</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>ENP_AC_CRV_Oper_Status</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Run</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Shutdown</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Standby</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>Locking</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>ENP_AC_CRV_Output_Valve_Status</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>OutputClose</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>OutputEnable</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>ENP_AC_CRV_Status_General</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>No</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Yes</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
