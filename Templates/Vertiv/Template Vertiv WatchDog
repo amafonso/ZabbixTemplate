@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.4</version>
+    <date>2021-04-08T14:41:58Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Vertiv WatchDog</template>
+            <name>Template Vertiv WatchDog</name>
+            <templates>
+                <template>
+                    <name>Template ICMP Ping and SNMP</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Battery</name>
+                </application>
+                <application>
+                    <name>Environment</name>
+                </application>
+                <application>
+                    <name>Environmental</name>
+                </application>
+                <application>
+                    <name>Healthy</name>
+                </application>
+                <application>
+                    <name>Information</name>
+                </application>
+                <application>
+                    <name>Power</name>
+                </application>
+                <application>
+                    <name>Sensor</name>
+                </application>
+                <application>
+                    <name>Test</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>WATCHDOG Device availability</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.2.1.4.1</snmp_oid>
+                    <key>internalAvail</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>VERTIV-BB-MIB_Avaliable</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;1</expression>
+                            <name>Dispositivo de controle de ambiente esta apresentando falhas</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>WATCHDOG Humidity reading</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.2.1.6.1</snmp_oid>
+                    <key>internalHumidity</key>
+                    <history>7d</history>
+                    <units>%</units>
+                    <description>Humidity reading</description>
+                    <applications>
+                        <application>
+                            <name>Environment</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>VERTIV-BB-MIB_Avaliable</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{avg(#2)}&gt;=60 or {avg(#2)}&lt;=15</expression>
+                            <name>Alarme de umidade: {ITEM.VALUE}</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>WATCHDOG Label</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.2.1.3.1</snmp_oid>
+                    <key>internalLabel</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>WATCHDOG Current reading for Temperature</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.2.1.5.1</snmp_oid>
+                    <key>internalTemp</key>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>C</units>
+                    <description>Current reading for Temperature in tenths of degrees. Units are given by temperatureUnits field in deviceInfo</description>
+                    <applications>
+                        <application>
+                            <name>Environment</name>
+                        </application>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.1</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{avg(#2)}&gt;=27 or {avg(#2)}&lt;=10</expression>
+                            <name>Alarme de alta temperatura: {ITEM.VALUE}</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>WATCHDOG Product model number</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.1.8.0</snmp_oid>
+                    <key>productModelNumber.0</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>WATCHDOG Product part number</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.1.9.0</snmp_oid>
+                    <key>productPartNumber</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>WATCHDOG Product platform</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.1.11.0</snmp_oid>
+                    <key>productPlatform</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>Product platform</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>WATCHDOG Title</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.1.1.0</snmp_oid>
+                    <key>productTitle</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>WATCHDOG Product version</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.1.2.0</snmp_oid>
+                    <key>productVersion</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>WATCHDOG Sensor Interno device availability</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.8.1.4.1</snmp_oid>
+                    <key>t3hdSensorAvail.1</key>
+                    <history>30d</history>
+                    <description>Device availability:&#13;
+0 =Unavailable&#13;
+1 =Available&#13;
+2 =Partially Unavailable</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>VERTIV-BB-MIB_Avaliable</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;1</expression>
+                            <name>Dispositivo de controle de ambiente interno esta apresentando falhas</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>WATCHDOG Sensor External A device availability</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.8.1.9.1</snmp_oid>
+                    <key>t3hdSensorExtAAvail.1</key>
+                    <history>30d</history>
+                    <description>Device availability:&#13;
+0 =Unavailable&#13;
+1 =Available&#13;
+2 =Partially Unavailable</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>VERTIV-BB-MIB_Avaliable</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>WATCHDOG Sensor External A temperature in tenths of a degree</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.8.1.11.1</snmp_oid>
+                    <key>t3hdSensorExtATemp.1</key>
+                    <history>30d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>C</units>
+                    <description>External A temperature in tenths of a degree. Units are given by temperatureUnits field in deviceInfo.</description>
+                    <applications>
+                        <application>
+                            <name>Sensor</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.1</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;=10 or &#13;
+{last()}&gt;=27</expression>
+                            <name>Alarme de alta temperatura: {ITEM.VALUE}, sensor External A</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>WATCHDOG Sensor External B device availability</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.8.1.12.1</snmp_oid>
+                    <key>t3hdSensorExtBAvail.1</key>
+                    <history>30d</history>
+                    <description>Device availability:&#13;
+0 =Unavailable&#13;
+1 =Available&#13;
+2 =Partially Unavailable</description>
+                    <applications>
+                        <application>
+                            <name>Healthy</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>VERTIV-BB-MIB_Avaliable</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>WATCHDOG Sensor External B temperature in tenths of a degree</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.8.1.14.1</snmp_oid>
+                    <key>t3hdSensorExtBTemp.1</key>
+                    <history>30d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>C</units>
+                    <description>External A temperature in tenths of a degree. Units are given by temperatureUnits field in deviceInfo.</description>
+                    <applications>
+                        <application>
+                            <name>Sensor</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.1</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;=10 or &#13;
+{last()}&gt;=27</expression>
+                            <name>Alarme de alta temperatura: {ITEM.VALUE}, sensor External B</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>WATCHDOG Internal dewpoint in tenths of a degree</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.8.1.8.1</snmp_oid>
+                    <key>t3hdSensorIntDewPoint.1</key>
+                    <delay>5m</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>C</units>
+                    <description>Internal dewpoint in tenths of a degree. Units are given by temperatureUnits field in deviceInfo.</description>
+                    <applications>
+                        <application>
+                            <name>Sensor</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.1</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;=10 or &#13;
+{last()}&gt;=27</expression>
+                            <name>Alarme de alta temperatura: {ITEM.VALUE}, sensor Internal dewpoint</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>WATCHDOG Sensor Internal Humidity reading</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.8.1.7.1</snmp_oid>
+                    <key>t3hdSensorIntHumidity.1</key>
+                    <history>7d</history>
+                    <units>%</units>
+                    <description>Internal Humidity reading</description>
+                    <applications>
+                        <application>
+                            <name>Environment</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>VERTIV-BB-MIB_Avaliable</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{avg(#2)}&gt;=60 or {avg(#2)}&lt;=15</expression>
+                            <name>Alarme de umidade: {ITEM.VALUE}, sensor Interno</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>WATCHDOG Sensor Internal temperature in tenths of a degree</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.8.1.6.1</snmp_oid>
+                    <key>t3hdSensorIntTemp.1</key>
+                    <history>30d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>C</units>
+                    <description>Internal temperature in tenths of a degree. Units are given by temperatureUnits field in deviceInfo.</description>
+                    <applications>
+                        <application>
+                            <name>Sensor</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.1</params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{avg(#2)}&gt;=27 or {avg(#2)}&lt;=10</expression>
+                            <name>Alarme de alta temperatura: {ITEM.VALUE}, sensor Interno</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>WATCHDOG Sensor Internal label (user-defined)</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.8.1.3.1</snmp_oid>
+                    <key>t3hdSensorLabel.1</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>Internal label (user-defined)</description>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>WATCHDOG Sensor Serial Number</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.8.1.2.1</snmp_oid>
+                    <key>t3hdSensorSerial.1</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>WATCHDOG  Current units for temperature/dewpoint</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.21239.5.1.1.7.0</snmp_oid>
+                    <key>temperatureUnits</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Information</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
+        </template>
+    </templates>
+    <value_maps>
+        <value_map>
+            <name>VERTIV-BB-MIB_Avaliable</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Unavailable</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Available</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Partially Unavailable</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
